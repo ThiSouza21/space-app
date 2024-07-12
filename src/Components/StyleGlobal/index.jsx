@@ -10,10 +10,12 @@ const StylesGlobals = createGlobalStyle`
 }
 
 html {
+  
   line-height: 1.15; 
   -webkit-text-size-adjust: 100%; 
 }
 body {
+  box-sizing: border-box;
   margin: 0;
   width: 100%;
   min-height: 100vh;
