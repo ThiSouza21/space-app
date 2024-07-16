@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const BackgroundGradient = styled.div`
   display: flex;
-  align-items: flex-start;
+  justify-content: flex-end;
   flex-direction: row;
   background: linear-gradient(
     174.61deg,
@@ -12,6 +12,9 @@ const BackgroundGradient = styled.div`
   );
   min-height: 100svh;
   width: 100%;
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+  }
 `;
 
 const ContainerMain = ({ children }) => {

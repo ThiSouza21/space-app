@@ -1,6 +1,22 @@
 import { createGlobalStyle } from "styled-components";
+import GandhiSansRegular from "./fontes/GandhiSans-Regular.otf";
+import GandhiSansBold from "./fontes/GandhiSans-Bold.otf";
 
 const StylesGlobals = createGlobalStyle`
+  @font-face {
+    font-family: 'GandhiSans';
+    src: url(${GandhiSansRegular}) url(${GandhiSansRegular}) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'GandhiSans';
+    src: url(${GandhiSansBold}) local(${GandhiSansBold}) format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
 #root {
   display: flex;
   flex-direction: column;
@@ -19,7 +35,8 @@ body {
   margin: 0;
   width: 100%;
   min-height: 100vh;
-  
+  font-family: 'GandhiSans', sans-serif;
+  color: #d9d9d9;
 }
 main {
   display: block;
@@ -35,6 +52,17 @@ hr {
 }
 a {
   background-color: transparent;
+
+}
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a.active {
+  font-weight: bold;
+
 }
 abbr[title] {
   border-bottom: none; 
@@ -79,6 +107,7 @@ textarea {
   font-size: 100%; 
   line-height: 1.15; 
   margin: 0; 
+  padding: 0;
 }
 button,
 input { 
@@ -120,6 +149,10 @@ legend {
 }
 progress {
   vertical-align: baseline;
+}
+figure {
+  padding: 0;
+  margin: 0;
 }
 textarea {
   overflow: auto;

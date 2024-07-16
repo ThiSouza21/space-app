@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledNavLink = styled(NavLink)`
@@ -7,9 +7,9 @@ const StyledNavLink = styled(NavLink)`
   text-decoration: none;
 `;
 
-const LabelNavLink = styled.label`
+const SpanNavLink = styled.span`
   display: flex;
-  width: auto;
+  width: clamp(2em, 8svw, 2.2em);
   height: auto;
   &:hover {
     cursor: pointer;
@@ -23,7 +23,7 @@ const LabelNavLink = styled.label`
 
 const NavLinks = ({ children, to = "", imageActive, imageNoActive }) => {
   const [isLinkActive, setIsLinkActive] = useState(false);
-
+  const historyLink = useNavigate();
   const urlInfo = useLocation();
   const textLinkName = children.trim().split(" ").join("");
 
@@ -33,18 +33,22 @@ const NavLinks = ({ children, to = "", imageActive, imageNoActive }) => {
       : setIsLinkActive(false);
   };
 
+  const handleLabelClick = () => {
+    historyLink(`/${to}`);
+  };
+
   useEffect(() => {
     handleUrlLink();
   });
 
   return (
     <>
-      <LabelNavLink htmlFor={`link${textLinkName}`}>
+      <SpanNavLink onClick={handleLabelClick}>
         <img
           src={isLinkActive ? imageActive : imageNoActive}
           alt={`Icon ${children}`}
         />
-      </LabelNavLink>
+      </SpanNavLink>
       <StyledNavLink
         id={`link${textLinkName}`}
         $isActive={isLinkActive}

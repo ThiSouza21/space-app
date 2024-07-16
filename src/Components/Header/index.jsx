@@ -1,6 +1,8 @@
 import StructureContainer from "../../Components/StructureContainer";
 import styled from "styled-components";
 import { CiSearch } from "react-icons/ci";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { forwardRef, useEffect, useRef } from "react";
 
 const SearchInput = styled.input`
   font-size: clamp(0.2em, 3svw, 1em);
@@ -44,9 +46,36 @@ const LabelSvg = styled.label`
   }
 `;
 
-const Header = () => {
+const ImageBurguerMenu = forwardRef((props, ref) => (
+  <div className="boxBurguerMenu" ref={ref}>
+    <GiHamburgerMenu {...props} />
+  </div>
+));
+
+ImageBurguerMenu.displayName = "ImageBurguerMenu";
+
+const Header = ({ toggleMenu, isMenuActive }) => {
+  const buttonToggle = useRef(null);
+
+  useEffect(() => {
+    if (buttonToggle.current) {
+      buttonToggle.current.style.display = isMenuActive ? "flex" : "none";
+    }
+  }, [isMenuActive]);
+
   return (
-    <StructureContainer justify={"flex-end"}>
+    <StructureContainer
+      position={"fixed"}
+      isMenuActive={isMenuActive}
+      justify={"flex-end"}
+    >
+      <ImageBurguerMenu
+        size={32}
+        fill="#d9d9d9"
+        onClick={toggleMenu}
+        ref={buttonToggle}
+        className="icon-menu"
+      />
       <ContainerSearch>
         <SearchInput
           id="serchHeader"
