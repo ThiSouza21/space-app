@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useModal } from "../ModalActive";
 
 const WrapperCardImageSpace = styled.figure`
   display: flex;
@@ -39,7 +40,9 @@ const WrapperCardImageSpace = styled.figure`
   }
 `;
 
-const CardsImages = ({ children, imgSpace, textFont }) => {
+const CardsImages = ({ children, imgSpace, textFont, modalExist }) => {
+  const { toggleModalActive, handleModalActive } = useModal();
+
   return (
     <WrapperCardImageSpace>
       <img src={imgSpace} alt="Foto Espaço" />
@@ -54,7 +57,13 @@ const CardsImages = ({ children, imgSpace, textFont }) => {
                 alt="Icone Coração"
               />
             </button>
-            <button>
+            <button
+              onClick={
+                modalExist
+                  ? () => handleModalActive(modalExist)
+                  : toggleModalActive
+              }
+            >
               <img src="/images/icones/open_in_full.svg" alt="" />
             </button>
           </div>
@@ -65,4 +74,3 @@ const CardsImages = ({ children, imgSpace, textFont }) => {
 };
 
 export default CardsImages;
-[];

@@ -9,7 +9,7 @@ const WrapperPageMain = styled.div`
   ${({ $position }) =>
     $position &&
     `
-  position: ${$position};z-index: 9999; top: 0; right: 0; background-color: #041833; `}
+  position: ${$position};z-index: 4000; top: 0; right: 0; background-color: #041833; `}
   ${({ $marginHeader }) => $marginHeader && `margin-top: ${$marginHeader}; `}
   @media screen and (max-width: 800px) {
     width: 100%;
@@ -24,8 +24,11 @@ const ContainerPageContent = styled.section`
   max-width: min(90%, 100em);
   height: 100%;
   gap: 1em;
-  flex-wrap: wrap;
 
+  ${({ $noWrap, $alignContent }) =>
+    $noWrap
+      ? `flex-wrap: ${$noWrap}; align-items: ${$alignContent}; `
+      : "flex-wrap: nowrap; : flex-start;"}
   @media screen and (max-width: 800px) {
     ${({ $isMenuActive }) =>
       $isMenuActive
@@ -60,10 +63,17 @@ const StructureContainer = ({
   isMenuActive,
   position,
   marginHeader,
+  noWrap,
+  alignContent,
 }) => {
   return (
     <WrapperPageMain $marginHeader={marginHeader} $position={position}>
-      <ContainerPageContent $isMenuActive={isMenuActive} $justify={justify}>
+      <ContainerPageContent
+        $alignContent={alignContent}
+        $noWrap={noWrap}
+        $isMenuActive={isMenuActive}
+        $justify={justify}
+      >
         {children}
       </ContainerPageContent>
     </WrapperPageMain>

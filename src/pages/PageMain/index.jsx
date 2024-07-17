@@ -12,6 +12,7 @@ const WrapperContentPage = styled.div`
   width: calc(100% - clamp(15%, 17em, 40%));
   height: 100%;
   min-height: 100svh;
+  position: relative;
   @media screen and (max-width: 800px) {
     width: 100%;
   }

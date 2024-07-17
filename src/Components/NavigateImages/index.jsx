@@ -8,7 +8,10 @@ const ContainerCardsImagesContent = styled.div`
   display: grid;
   justify-content: space-between;
   gap: 1em;
-  grid-template-columns: repeat(auto-fit, min(46%, 28em));
+  grid-template-columns: repeat(auto-fit, min(75%, 34em));
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: repeat(auto-fit, min(100%, 38em));
+  }
 `;
 
 const NavigateImages = () => {
@@ -21,6 +24,7 @@ const NavigateImages = () => {
           key={image.id}
           textFont={image.fonte}
           imgSpace={image.path}
+          modalExist={image.id}
         >
           {image.titulo}
         </CardsImages>

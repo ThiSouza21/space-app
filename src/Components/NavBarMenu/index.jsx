@@ -11,7 +11,7 @@ const WrapperMenuMain = styled.div`
   height: inherit;
   transition: all 0.2s ease-in-out;
   background: #041833;
-  z-index: 99999996;
+  z-index: 6000;
   position: fixed;
 
   @media screen and (max-width: 800px) {
