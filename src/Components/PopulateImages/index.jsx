@@ -13,8 +13,11 @@ const ContainerPopulate = styled.div`
 
 const PopulateImages = () => {
   const { imagesSpace } = useImages();
-  let initalValue = Math.ceil(Math.random(2) * imagesSpace.length);
-  let lastValue = Math.ceil(Math.random(initalValue) * imagesSpace.length);
+  let initalValue = Math.floor(Math.random(1) * imagesSpace.length);
+  let lastValue =
+    Math.floor(Math.random(1) * (imagesSpace.length - initalValue)) +
+    initalValue +
+    1;
   const imagesPopulate = imagesSpace.slice(initalValue, lastValue);
 
   return (
