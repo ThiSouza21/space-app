@@ -10,7 +10,7 @@ export const ModalProvider = ({ children }) => {
     setIsModalActive(null);
   };
   const handleModalActive = (cardId) => {
-    setIsModalActive(imagesSpace[cardId - 1]);
+    setIsModalActive(imagesSpace[cardId]);
   };
 
   return (

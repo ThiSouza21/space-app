@@ -26,12 +26,12 @@ const ContainerGalleryGridPopulate = styled.div`
   }
 `;
 
-const ContainerImages = () => {
+const ContainerImages = ({ tagImages }) => {
   return (
     <StructureContainer alignContent={"flex-start"} noWrap={"wrap"}>
       <ContainerGalleryGrid>
         <h3>Navegue pela Galeria</h3>
-        <NavigateImages />
+        <NavigateImages tagImages={tagImages} />
       </ContainerGalleryGrid>
       <ContainerGalleryGridPopulate>
         <h3>Populares</h3>

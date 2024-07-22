@@ -21,7 +21,7 @@ const ModalZoom = ({ effectZoom }) => {
 
   return (
     <ContainerDialogModal $effectZoom={effectZoom}>
-      <CardsImages textFont={fonte} imgSpace={path}>
+      <CardsImages textFont={fonte} imgSpace={path} modalExist={isModalActive}>
         {titulo}
       </CardsImages>
     </ContainerDialogModal>

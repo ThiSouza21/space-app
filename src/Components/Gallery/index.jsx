@@ -4,6 +4,7 @@ import HeroImage from "../HeroImage";
 import { useModal } from "../ModalActive";
 import ModalZoom from "../ModalZoom";
 import Tags from "../Tags";
+import { useState, useEffect } from "react";
 
 const OverlayModal = styled.div`
   position: fixed;
@@ -14,12 +15,22 @@ const OverlayModal = styled.div`
 
 const Gallery = () => {
   const { isModalActive } = useModal();
+  const [tagImages, setTagImages] = useState(0);
+
+  const handleSetTagImage = (tagId) => {
+    setTagImages(tagId);
+  };
+
+  useEffect(() => {}, [tagImages]);
+
   return (
     <>
       <HeroImage />
-      <Tags />
-      <ContainerImages />
-      {isModalActive && <ModalZoom effectZoom={true} />}
+      <Tags tagImages={tagImages} handleSetTagImage={handleSetTagImage} />
+      <ContainerImages tagImages={tagImages} />
+      {isModalActive && (
+        <ModalZoom effectZoom={true} modalExist={isModalActive} />
+      )}
       {isModalActive && <OverlayModal />}
     </>
   );

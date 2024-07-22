@@ -6,16 +6,32 @@ const ButtonTags = styled.button`
   outline: none;
   border-radius: 10px;
   padding: 0.7em 0.4em;
-  border: 1px solid #c98cf1;
   height: fit-content;
   color: #d9d9d9;
+  cursor: pointer;
+  border: none;
+
+  ${({ $tagImages }) => $tagImages && "border: 1px solid #c98cf1;"}
 `;
 
-const ButtonsTags = () => {
+const ButtonsTags = ({ handleSetTagImage, tagImages }) => {
   return (
     <>
       {tags.map((tag) => {
-        return <ButtonTags key={tag.id}>{tag.titulo}</ButtonTags>;
+        let tagExist = false;
+        if (tag.id === tagImages) {
+          tagExist = true;
+        }
+
+        return (
+          <ButtonTags
+            $tagImages={tagExist}
+            onClick={() => handleSetTagImage(tag.id)}
+            key={tag.id}
+          >
+            {tag.titulo}
+          </ButtonTags>
+        );
       })}
     </>
   );

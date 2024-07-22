@@ -13,8 +13,8 @@ const ContainerPopulate = styled.div`
 
 const PopulateImages = () => {
   const { imagesSpace } = useImages();
-  let initalValue = Math.floor(Math.random(1) * imagesSpace.length);
-  let lastValue =
+  const initalValue = Math.floor(Math.random(1) * imagesSpace.length);
+  const lastValue =
     Math.floor(Math.random(1) * (imagesSpace.length - initalValue)) +
     initalValue +
     1;
@@ -26,7 +26,12 @@ const PopulateImages = () => {
         const { id, titulo, fonte, path } = card;
 
         return (
-          <CardsImages key={id} textFont={fonte} imgSpace={path}>
+          <CardsImages
+            key={id}
+            textFont={fonte}
+            imgSpace={path}
+            modalExist={id}
+          >
             {titulo}
           </CardsImages>
         );

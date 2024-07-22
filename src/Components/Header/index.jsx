@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { forwardRef, useEffect, useRef } from "react";
+import { useSearch } from "../SearchContext";
+import { useImages } from "../ImagesPage";
 
 const SearchInput = styled.input`
   font-size: clamp(0.2em, 3svw, 1em);
@@ -15,7 +17,7 @@ const SearchInput = styled.input`
   outline: none;
 `;
 
-const ContainerSearch = styled.div`
+const ContainerSearch = styled.form`
   position: relative;
   display: flex;
   align-self: flex-end;
@@ -56,6 +58,19 @@ ImageBurguerMenu.displayName = "ImageBurguerMenu";
 
 const Header = ({ toggleMenu, isMenuActive }) => {
   const buttonToggle = useRef(null);
+  const { valueSearch, handleSearchImages, setFilterImages, filterImages } =
+    useSearch();
+  const { imagesSpace } = useImages();
+
+  useEffect(() => {
+    const regex = new RegExp(valueSearch, "i");
+    const arrayImagesFilters = [...imagesSpace];
+
+    const filterImagesRegexp = arrayImagesFilters.filter((image) =>
+      regex.test(image.titulo)
+    );
+    setFilterImages(filterImagesRegexp);
+  }, [valueSearch]);
 
   useEffect(() => {
     if (buttonToggle.current) {
@@ -78,6 +93,7 @@ const Header = ({ toggleMenu, isMenuActive }) => {
       />
       <ContainerSearch>
         <SearchInput
+          onChange={handleSearchImages}
           id="serchHeader"
           type="text"
           placeholder="O que você procura?"

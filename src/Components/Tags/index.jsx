@@ -14,12 +14,15 @@ const ContainerButtonsTags = styled.div`
   flex-wrap: wrap;
 `;
 
-const Tags = () => {
+const Tags = ({ handleSetTagImage, tagImages }) => {
   return (
     <StructureContainer justify={"flex-start"}>
       <TitleContainerTags>Busque por tags:</TitleContainerTags>
       <ContainerButtonsTags>
-        <ButtonsTags />
+        <ButtonsTags
+          tagImages={tagImages}
+          handleSetTagImage={handleSetTagImage}
+        />
       </ContainerButtonsTags>
     </StructureContainer>
   );
