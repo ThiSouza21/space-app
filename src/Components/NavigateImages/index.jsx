@@ -9,7 +9,7 @@ const ContainerCardsImagesContent = styled.div`
   display: grid;
   justify-content: space-between;
   gap: 1em;
-  grid-template-columns: repeat(auto-fit, min(75%, 34em));
+  grid-template-columns: repeat(auto-fit, min(75%, 35em));
   @media screen and (max-width: 1000px) {
     grid-template-columns: repeat(auto-fit, min(100%, 38em));
   }
